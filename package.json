@@ -1,7 +1,7 @@
 {
   "name": "gulp-prettify",
   "description": "Prettify, format, beautify HTML.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/jonschlinkert/gulp-prettify",
   "author": {
     "name": "Jon Schlinkert",
