@@ -27,7 +27,8 @@
   "dependencies": {
     "event-stream": "~3.0.20",
     "gulp": "~3.1.4",
-    "js-beautify": "~1.4.2"    
+    "js-beautify": "~1.4.2",
+    "gulp-util": "~2.2.14"
   },
   "devDependencies": {
     "chai": "~1.8.1",

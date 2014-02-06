@@ -9,17 +9,20 @@
 var Buffer = require('buffer').Buffer;
 var es = require('event-stream');
 var prettify = require('js-beautify').html;
+var gutil = require('gulp-util');
 
 module.exports = function (opts) {
   'use strict';
 
-  opts = opts || {};
+  opts = opts || {
+    showStack: false
+  };
 
   return es.map(function (file, cb) {
     try {
       file.contents = new Buffer(prettify(String(file.contents), opts));
     } catch (err) {
-      console.warn('Error caught from js-beautify: ' + err.message + '.');
+      return cb(new gutil.PluginError('gulp-prettify', err, opts));
     }
     cb(null, file);
   });
