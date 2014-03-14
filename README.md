@@ -13,7 +13,7 @@ var prettify = require('gulp-prettify');
 
 gulp.task('prettify', function() {
   gulp.src('./src/foo.html')
-    .pipe(prettify({collapseWhitespace: true}))
+    .pipe(prettify({indentSize: 2}))
     .pipe(gulp.folder('./dist/foo.html'))
 });
 ```
