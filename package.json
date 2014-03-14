@@ -22,11 +22,13 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.9.0"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "event-stream": "~3.0.20",
-    "gulp": "~3.1.4",
     "js-beautify": "~1.4.2",
     "gulp-util": "~2.2.14"
   },
