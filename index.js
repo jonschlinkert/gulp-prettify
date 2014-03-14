@@ -6,7 +6,6 @@
  */
 
 
-var Buffer = require('buffer').Buffer;
 var es = require('event-stream');
 var prettify = require('js-beautify').html;
 var gutil = require('gulp-util');
