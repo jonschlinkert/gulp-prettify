@@ -1,4 +1,6 @@
-# gulp-prettify [![NPM version](https://badge.fury.io/js/gulp-prettify.png)](http://badge.fury.io/js/gulp-prettify)
+# gulp-prettify 
+[![Build Status](https://travis-ci.org/jonschlinkert/gulp-prettify.png?branch=master)](https://travis-ci.org/jonschlinkert/gulp-prettify)
+[![NPM version](https://badge.fury.io/js/gulp-prettify.png)](http://badge.fury.io/js/gulp-prettify)
 
 > Prettify HTML.
 
@@ -17,6 +19,7 @@ gulp.task('prettify', function() {
     .pipe(gulp.folder('./dist/foo.html'))
 });
 ```
+Other examples are in the [example folder.](http://github.com/jonschlinkert/gulp-prettify/tree/master/examples)
 
 See the [js-beautify docs](https://github.com/einars/js-beautify) for options.
 
