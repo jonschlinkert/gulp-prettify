@@ -1,12 +1,9 @@
-/*
- * gulp-prettify
- * https://github.com/jonschlinkert/gulp-prettify
+/*!
+ * gulp-prettify <https://github.com/jonschlinkert/gulp-prettify>
  *
- * Copyright (c) 2013 Jon Schlinkert
+ * Copyright (c) 2014 Jon Schlinkert
  * Licensed under the MIT license.
  */
-
-/* globals describe, it */
 
 'use strict';
 
@@ -17,7 +14,6 @@ var expect = require('chai').expect;
 var prettify = require('../');
 
 var fixtureFile = fs.readFileSync(path.join(__dirname, './fixtures/index.html'));
-
 
 describe('prettify HTML', function () {
   describe('gulp-prettify', function () {
@@ -31,10 +27,10 @@ describe('prettify HTML', function () {
         path: 'test/fixtures/index.html',
         contents: fixtureFile
       });
-      prettyStream.once('data', function(newFile){
-          expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/normal.html'))));
-          done();
-        });
+      prettyStream.once('data', function (newFile) {
+        expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/normal.html'))));
+        done();
+      });
       prettyStream.write(fakeFile);
     });
 

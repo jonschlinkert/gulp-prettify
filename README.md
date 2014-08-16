@@ -1,4 +1,4 @@
-# gulp-prettify 
+# gulp-prettify
 [![Build Status](https://travis-ci.org/jonschlinkert/gulp-prettify.png?branch=master)](https://travis-ci.org/jonschlinkert/gulp-prettify)
 [![NPM version](https://badge.fury.io/js/gulp-prettify.png)](http://badge.fury.io/js/gulp-prettify)
 
@@ -14,9 +14,9 @@ var gulp = require('gulp');
 var prettify = require('gulp-prettify');
 
 gulp.task('prettify', function() {
-  gulp.src('./src/foo.html')
-    .pipe(prettify({indentSize: 2}))
-    .pipe(gulp.folder('./dist/foo.html'))
+  gulp.src('src/*.html')
+    .pipe(prettify({indent_size: 2}))
+    .pipe(gulp.dest('dist'))
 });
 ```
 Other examples are in the [example folder.](http://github.com/jonschlinkert/gulp-prettify/tree/master/examples)

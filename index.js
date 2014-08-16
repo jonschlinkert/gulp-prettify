@@ -1,28 +1,39 @@
-/*
- * gulp-prettify
- * https://github.com/jonschlinkert/gulp-prettify
+/*!
+ * gulp-prettify <https://github.com/jonschlinkert/gulp-prettify>
+ *
  * Copyright (c) 2014 Jon Schlinkert
  * Licensed under the MIT license.
  */
 
+'use strict';
 
-var es = require('event-stream');
+var through = require('through2');
 var prettify = require('js-beautify').html;
 var gutil = require('gulp-util');
+var _ = require('lodash');
 
-module.exports = function (opts) {
-  'use strict';
+module.exports = function (options) {
+  options = options || {};
 
-  opts = opts || {
-    showStack: false
-  };
-
-  return es.map(function (file, cb) {
+  return through.obj(function (file, encoding, callback) {
     try {
-      file.contents = new Buffer(prettify(String(file.contents), opts));
+
+      var str = file.contents.toString(encoding || 'utf8');
+
+      file.contents = new Buffer(prettify(str, _.extend({
+        indent_handlebars: true,
+        indent_inner_html: true,
+        preserve_newlines: false,
+        max_preserve_newlines: 1,
+        brace_style: 'expand',
+        indent_char: ' ',
+        indent_size: 2,
+      }, options)));
+
     } catch (err) {
-      return cb(new gutil.PluginError('gulp-prettify', err, opts));
+      return callback(new gutil.PluginError('gulp-prettify', err, options));
     }
-    cb(null, file);
+
+    callback(null, file);
   });
 };
