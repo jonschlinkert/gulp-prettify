@@ -11,7 +11,7 @@ Install the module with: `npm install gulp-prettify`
 
 ```js
 var gulp = require('gulp');
-var prettify = require('gulp-prettify');
+var prettify = require('gulp-js-prettify');
 
 gulp.task('prettify', function() {
   gulp.src('src/*.html')
