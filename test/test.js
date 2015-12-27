@@ -7,79 +7,89 @@
 
 'use strict';
 
+require('mocha');
 var fs = require('fs');
 var path = require('path');
+var assert = require('assert');
 var gutil = require('gulp-util');
-var expect = require('chai').expect;
-var prettify = require('../');
+var prettify = require('..');
 
-var fixtureFile = fs.readFileSync(path.join(__dirname, './fixtures/index.html'));
+var fixtureFile = fs.readFileSync(path.join(__dirname, 'fixtures/index.html'));
 
-describe('prettify HTML', function () {
-  describe('gulp-prettify', function () {
+describe('prettify HTML', function() {
+  describe('gulp-prettify', function() {
 
-    it('should prettify HTML files', function (done) {
-
-      var prettyStream = prettify();
-      var fakeFile = new gutil.File({
+    it('should prettify HTML files', function(cb) {
+      var stream = prettify();
+      var fixture = new gutil.File({
         base: 'test/fixtures',
         cwd: 'test/',
         path: 'test/fixtures/index.html',
         contents: fixtureFile
       });
-      prettyStream.once('data', function (newFile) {
-        expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/normal.html'))));
-        done();
+      stream.once('data', function(file) {
+        assert.equal(String(file.contents), String(fs.readFileSync(path.join(__dirname, 'expected/normal.html'))));
+        cb();
       });
-      prettyStream.write(fakeFile);
+      stream.write(fixture);
     });
 
-    it('should indent inner HTML', function (done) {
+    it('should indent inner HTML', function(cb) {
+      var stream = prettify({
+        indent_inner_html: true
+      });
 
-      var prettyStream = prettify({indent_inner_html: true});
-      var fakeFile = new gutil.File({
+      var fixture = new gutil.File({
         base: 'test/fixtures',
         cwd: 'test/',
         path: 'test/fixtures/index.html',
         contents: fixtureFile
       });
-      prettyStream.once('data', function(newFile){
-          expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/indent.html'))));
-          done();
-        });
-      prettyStream.write(fakeFile);
+
+      stream.once('data', function(file) {
+        assert.equal(String(file.contents), String(fs.readFileSync(path.join(__dirname, 'expected/indent.html'))));
+        cb();
+      });
+      stream.write(fixture);
     });
 
-    it('should indent a specified tab size', function (done) {
+    it('should indent a specified tab size', function(cb) {
+      var stream = prettify({
+        indent_size: 2
+      });
 
-      var prettyStream = prettify({indent_size: 2});
-      var fakeFile = new gutil.File({
+      var fixture = new gutil.File({
         base: 'test/fixtures',
         cwd: 'test/',
         path: 'test/fixtures/index.html',
         contents: fixtureFile
       });
-      prettyStream.once('data', function(newFile){
-          expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/indent_tab_2.html'))));
-          done();
-        });
-      prettyStream.write(fakeFile);
+
+      stream.once('data', function(file) {
+        assert.equal(String(file.contents), String(fs.readFileSync(path.join(__dirname, 'expected/indent_tab_2.html'))));
+        cb();
+      });
+      stream.write(fixture);
     });
 
-    it('should not prettify pre or code tags', function (done) {
+    it('should not prettify pre or code tags', function(cb) {
+      var stream = prettify({
+        unformatted: ['pre', 'code']
+      });
 
-      var prettyStream = prettify({unformatted: ['pre', 'code'] });
-      var fakeFile = new gutil.File({
+      var fixture = new gutil.File({
         base: 'test/fixtures',
         cwd: 'test/',
         path: 'test/fixtures/index.html',
         contents: fixtureFile
       });
-      prettyStream.once('data', function(newFile){
-          expect(String(newFile.contents)).to.equal(String(fs.readFileSync(path.join(__dirname, './expected/unformatted_pre.html'))));
-          done();
-        });
-      prettyStream.write(fakeFile);
+
+      stream.once('data', function(file) {
+        assert.equal(String(file.contents), String(fs.readFileSync(path.join(__dirname, 'expected/unformatted_pre.html'))));
+        cb();
+      });
+
+      stream.write(fixture);
     });
   });
 });
