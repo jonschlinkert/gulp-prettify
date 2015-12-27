@@ -3,22 +3,14 @@
   "description": "Prettify, format, beautify HTML.",
   "version": "0.3.0",
   "homepage": "https://github.com/jonschlinkert/gulp-prettify",
-  "author": {
-    "name": "Jon Schlinkert",
-    "url": "https://github.com/jonschlinkert"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jonschlinkert/gulp-prettify.git"
-  },
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/gulp-prettify",
   "bugs": {
     "url": "https://github.com/jonschlinkert/gulp-prettify/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/jonschlinkert/gulp-prettify/blob/master/LICENSE-MIT"
-    }
+  "license": "MIT",
+  "files": [
+    "index.js"
   ],
   "main": "index.js",
   "engines": {
@@ -35,7 +27,7 @@
   },
   "devDependencies": {
     "chai": "~1.8.1",
-    "mocha": "~1.16.1"
+    "mocha": "*"
   },
   "keywords": [
     "beautify",
@@ -47,5 +39,10 @@
     "indent",
     "js-beautify",
     "prettify"
-  ]
+  ],
+  "verb": {
+    "related": {
+      "list": []
+    }
+  }
 }
