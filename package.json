@@ -14,19 +14,18 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">= 0.9.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha"
   },
   "dependencies": {
-    "gulp-util": "^3.0.0",
-    "js-beautify": "^1.5.1",
-    "lodash": "^2.4.1",
-    "through2": "^0.6.1"
+    "extend-shallow": "^2.0.1",
+    "js-beautify": "^1.5.10",
+    "through2": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
+    "gulp": "^3.9.0",
     "mocha": "*"
   },
   "keywords": [
@@ -42,7 +41,14 @@
   ],
   "verb": {
     "related": {
-      "list": []
-    }
+      "list": [
+        "gulp-dest",
+        "gulp-extname",
+        "gulp-htmlmin"
+      ]
+    },
+    "plugins": [
+      "gulp-format-md"
+    ]
   }
 }
