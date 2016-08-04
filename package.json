@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "LICENSE"
   ],
   "main": "index.js",
   "engines": {
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-format-md": "^0.1.10",
     "mocha": "*"
   },
   "keywords": [
@@ -37,6 +39,7 @@
     "html",
     "indent",
     "js-beautify",
+    "plugin",
     "prettify"
   ],
   "verb": {
@@ -49,6 +52,14 @@
     },
     "plugins": [
       "gulp-format-md"
-    ]
+    ],
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "lint": {
+      "reflinks": true
+    }
   }
 }
