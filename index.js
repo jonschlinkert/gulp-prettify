@@ -15,6 +15,8 @@ var defaults = {
   indent_inner_html: true,
   preserve_newlines: false,
   max_preserve_newlines: 1,
+  unformatted: ['pre', 'code'],
+  extra_liners: [],
   brace_style: 'expand',
   indent_char: ' ',
   indent_size: 2
@@ -30,7 +32,8 @@ module.exports = function(options) {
 
     try {
       var str = file.contents.toString();
-      file.contents = new Buffer(prettify.html(str, opts));
+      var prettified = prettify.html(str, opts);
+      file.contents = new Buffer(prettified);
     } catch (err) {
       next(err);
       return;
